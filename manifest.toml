@@ -13,7 +13,7 @@ maintainers = ["eric_G"]
 
 [upstream]
 license = "GPL-3.0"
-website = "https://github.com/cloudreve/Cloudreve"
+website = "https://cloudreve.org/"
 demo = "https://demo.cloudreve.org/session"
 admindoc = "https://docs.cloudreve.org/en/"
 code = "https://github.com/cloudreve/Cloudreve"
