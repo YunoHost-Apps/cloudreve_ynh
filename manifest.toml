@@ -1,0 +1,76 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/main/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "cloudreve"
+name = "Cloudreve"
+description.en = "Self-hosted file management and sharing system, supports multiple storage providers"
+description.fr = "Système de gestion et de partage de fichiers auto-hébergé, prenant en charge plusieurs fournisseurs de stockage"
+
+version = "4.5.0~ynh1"
+
+maintainers = ["eric_G"]
+
+[upstream]
+license = "GPL-3.0"
+website = "https://github.com/cloudreve/Cloudreve"
+demo = "https://demo.cloudreve.org/session"
+admindoc = "https://docs.cloudreve.org/en/"
+code = "https://github.com/cloudreve/Cloudreve"
+
+[integration]
+yunohost = ">= 12.0.9"
+helpers_version = "2.1"
+architectures = "all"
+multi_instance = true
+
+ldap = false
+sso = false
+
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    #[install.path]
+    #type = "path"
+    #default = "/example"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+
+    [resources.sources]
+
+    [resources.sources.main]
+    in_subdir = false
+    amd64.url = "https://github.com/cloudreve/cloudreve/releases/download/4.5.0/cloudreve_4.5.0_linux_amd64.tar.gz"
+    amd64.sha256 = "8a08e3892cec03c0d22589df4828715e94c9dec1fa762bbe5c9eff993154ccee"
+    arm64.url = "https://github.com/cloudreve/cloudreve/releases/download/4.5.0/cloudreve_4.5.0_linux_arm64.tar.gz"
+    arm64.sha256 = "eba4f8a75d1710c4832c98ed4c39e689b2dd025b8fe36f9b49bcf70592dcd3dd"
+
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.asset.amd64 = ".*_linux_amd64.tar.gz"
+    autoupdate.asset.arm64 = ".*_linux_rm64.tar.gz"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    #[resources.data_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
+
+    [resources.apt]
+    packages = "mariadb-server, redis-server"
+
+    [resources.database]
+    type = "mysql"
